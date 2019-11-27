@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "aura": "Dark"
+    },
+    {
+      "id": "2",
+      "aura": "Light"
+    },
+    {
+      "id": "3",
+      "aura": "Wind"
+    },
+    {
+      "id": "4",
+      "aura": "Fire"
+    },
+    {
+      "id": "5",
+      "aura": "Water"
+    }
+  ]
+}

@@ -14,9 +14,15 @@
 }
 
 .Hero-item {
+  display: inline;
   padding: 5px;
   margin: 5px;
   background-color: khaki;
+}
+
+.Hero-item-delete-btn {
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .Retinues-calculation-section {

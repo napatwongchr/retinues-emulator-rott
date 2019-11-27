@@ -1,13 +1,85 @@
 {
   "data": [
-    { "id": "1", "name": "Atroce" },
-    { "id": "2", "name": "Alice" },
-    { "id": "3", "name": "Bluebear" },
-    { "id": "4", "name": "Loli" },
-    { "id": "5", "name": "Garm" },
-    { "id": "6", "name": "Dark lord" },
-    { "id": "7", "name": "Dark illusion" },
-    { "id": "8", "name": "Orc Hero" },
-    { "id": "9", "name": "Orc lord" }
+    {
+      "id": "1",
+      "name": "Atroce",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Scissors",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "2",
+      "name": "Alice",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Rock",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "3",
+      "name": "Bluebear",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Scissors",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "4",
+      "name": "Loli",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Rock",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "5",
+      "name": "Garm",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Paper",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "6",
+      "name": "Dark Lord",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Scissors",
+      "auras": ["Dark"],
+      "additionalAuras": ["Fire"]
+    },
+    {
+      "id": "7",
+      "name": "Dark Illusion",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Scissors",
+      "auras": ["Dark"],
+      "additionalAuras": []
+    },
+    {
+      "id": "8",
+      "name": "Orc Hero",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Rock",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "9",
+      "name": "Orc Lord",
+      "evolveLevel": 1,
+      "essence": "",
+      "element": "Rock",
+      "auras": [],
+      "additionalAuras": []
+    }
   ]
 }
