@@ -1,22 +1,23 @@
 import React, { useState, useEffect, useCallback } from "react";
 import heroes from "./heroes.json";
+import BONUS_ELEMENT_BUFFS from "./elementBuffs.json";
+import BONUS_AURA_BUFFS from "./auraBuffs.json";
 import "./App.css";
-import { SlowBuffer } from "buffer";
+
+const uuidv4 = require("uuid/v4");
 
 function App() {
-  const [retinuesList, setRetinuesList] = useState([]);
-  const [retinuesAuraCount, setRetinuesAuraCount] = useState({});
-  const [retinuesElementCount, setRetinuesElementCount] = useState({});
+  const [heroList, setHeroList] = useState([]);
+  const [resonanceAuraCount, setResonanceAuraCount] = useState({});
+  const [resonanceElementCount, setResonanceElementCount] = useState({});
+  const [resonanceElementBuffs, setResonanceElementBuffs] = useState([]);
+  const [resonanceAuraBuffs, setResonanceAuraBuffs] = useState([]);
 
-  const handleOnDragStart = heroId => e => {
-    e.dataTransfer.setData("id", heroId);
-  };
-
-  const countRetinues = useCallback(() => {
+  const countResonances = useCallback(() => {
     let countElements = {};
     let countAuras = {};
     // count types
-    retinuesList.forEach(item => {
+    heroList.forEach(item => {
       if (countElements[item.element]) {
         countElements[item.element]++;
       } else {
@@ -40,32 +41,97 @@ function App() {
       });
     });
 
-    setRetinuesAuraCount(countAuras);
-    setRetinuesElementCount(countElements);
-  }, [retinuesList]);
+    setResonanceAuraCount(countAuras);
+    setResonanceElementCount(countElements);
+  }, [heroList]);
+
+  const handleOnDragStart = heroId => e => {
+    e.dataTransfer.setData("id", heroId);
+  };
 
   const handleDragOver = e => {
     e.preventDefault();
   };
 
   const handleOnDrop = e => {
-    if (retinuesList.length < 5) {
+    if (heroList.length < 5) {
       let droppedHeroId = e.dataTransfer.getData("id");
-      let filteredHero = heroes.data.filter(hero => hero.id === droppedHeroId);
-      setRetinuesList([...retinuesList, ...filteredHero]);
+      let filteredHero = heroes.data
+        .filter(hero => hero.id === droppedHeroId)
+        .map(item => {
+          return {
+            ...item,
+            id: `${item.id}-${uuidv4()}`
+          };
+        });
+      setHeroList([...heroList, ...filteredHero]);
     }
   };
 
   const handleOnHeroDelete = heroId => e => {
-    let deletedRetinuesList = retinuesList.filter(item => item.id !== heroId);
-    setRetinuesList([...deletedRetinuesList]);
+    let deletedHeroList = heroList.filter(item => item.id !== heroId);
+    setHeroList([...deletedHeroList]);
   };
 
-  useEffect(() => {
-    countRetinues();
-  }, [countRetinues, retinuesList.length]);
+  const checkElementBuffCondition = useCallback(() => {
+    let resultBuffs = [];
 
-  console.log(retinuesAuraCount, retinuesElementCount);
+    Object.keys(BONUS_ELEMENT_BUFFS).forEach(bonus => {
+      let isConditionValid = Object.keys(
+        BONUS_ELEMENT_BUFFS[bonus]["conditions"]
+      ).map(element => {
+        return (
+          resonanceElementCount[element] >=
+          BONUS_ELEMENT_BUFFS[bonus]["conditions"][element]
+        );
+      });
+
+      if (BONUS_ELEMENT_BUFFS[bonus]["isSomeConditions"] || false) {
+        isConditionValid = isConditionValid.some(value => value === true);
+      } else {
+        isConditionValid = isConditionValid.every(value => value === true);
+      }
+
+      if (isConditionValid) {
+        resultBuffs.push(bonus);
+      }
+
+      setResonanceElementBuffs(resultBuffs);
+    });
+  }, [resonanceElementCount]);
+
+  const checkAuraBuffCondition = useCallback(() => {
+    let resultBuffs = [];
+
+    Object.keys(BONUS_AURA_BUFFS).forEach(bonus => {
+      let isConditionValid = Object.keys(BONUS_AURA_BUFFS[bonus]["conditions"])
+        .map(aura => {
+          return (
+            resonanceAuraCount[aura] >=
+            BONUS_AURA_BUFFS[bonus]["conditions"][aura]
+          );
+        })
+        .every(value => value === true);
+
+      if (isConditionValid) {
+        resultBuffs.push(bonus);
+      }
+    });
+
+    setResonanceAuraBuffs(resultBuffs);
+  }, [resonanceAuraCount]);
+
+  useEffect(() => {
+    countResonances();
+  }, [countResonances, heroList.length]);
+
+  useEffect(() => {
+    checkAuraBuffCondition();
+  }, [checkAuraBuffCondition, resonanceAuraCount]);
+
+  useEffect(() => {
+    checkElementBuffCondition();
+  }, [checkElementBuffCondition, resonanceElementCount]);
 
   return (
     <div className="App">
@@ -93,9 +159,9 @@ function App() {
       >
         <h1>Retinues calculation area</h1>
         <div className="Card-section">
-          {retinuesList.map((item, index) => {
+          {heroList.map(item => {
             return (
-              <div key={index} className="Hero-item">
+              <div key={item.id} className="Hero-item">
                 <span>{item.name}</span>
                 <span
                   className="Hero-item-delete-btn"
@@ -110,23 +176,35 @@ function App() {
         <div className="Retinues-summary">
           <h3>This is summary</h3>
           <div className="Retinues-count">
-            {Object.keys(retinuesAuraCount).map((key, index) => {
+            {Object.keys(resonanceAuraCount).map((key, index) => {
               return (
                 <div key={index} className="Retinues-aura-count">
                   <span>{key}</span>
-                  <span>{retinuesAuraCount[key]}</span>
+                  <span>{resonanceAuraCount[key]}</span>
                 </div>
               );
             })}
 
-            {Object.keys(retinuesElementCount).map((key, index) => {
+            {Object.keys(resonanceElementCount).map((key, index) => {
               return (
                 <div key={index} className="Retinues-element-count">
                   <span>{key}</span>
-                  <span>{retinuesElementCount[key]}</span>
+                  <span>{resonanceElementCount[key]}</span>
                 </div>
               );
             })}
+          </div>
+          <div className="Resonance-summary-info">
+            <div className="Resonance-summary-info-elements-buffs">
+              {resonanceElementBuffs.map((elementBuff, index) => {
+                return <span key={index}>{elementBuff}</span>;
+              })}
+            </div>
+            <div className="Resonance-summary-info-auras-buffs">
+              {resonanceAuraBuffs.map((auraBuff, index) => {
+                return <span key={index}>{auraBuff}</span>;
+              })}
+            </div>
           </div>
         </div>
       </div>

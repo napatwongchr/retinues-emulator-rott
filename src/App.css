@@ -6,6 +6,7 @@
 .Hero-list-section {
   max-width: 350px;
   background-color: lightblue;
+  overflow-y: scroll;
 }
 
 .Hero-list {

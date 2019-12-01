@@ -2,83 +2,290 @@
   "data": [
     {
       "id": "1",
-      "name": "Atroce",
-      "evolveLevel": 1,
+      "name": "Phreeoni",
       "essence": "",
       "element": "Scissors",
-      "auras": [],
+      "auras": ["Water"],
       "additionalAuras": []
     },
     {
       "id": "2",
-      "name": "Alice",
-      "evolveLevel": 1,
+      "name": "Eddgar",
       "essence": "",
-      "element": "Rock",
-      "auras": [],
+      "element": "Scissors",
+      "auras": ["Fire"],
       "additionalAuras": []
     },
     {
       "id": "3",
-      "name": "Bluebear",
-      "evolveLevel": 1,
+      "name": "Osiris",
       "essence": "",
       "element": "Scissors",
-      "auras": [],
+      "auras": ["Dark"],
       "additionalAuras": []
     },
     {
       "id": "4",
-      "name": "Loli",
-      "evolveLevel": 1,
+      "name": "Baphomet",
       "essence": "",
-      "element": "Rock",
-      "auras": [],
+      "element": "Scissors",
+      "auras": ["Dark"],
       "additionalAuras": []
     },
     {
       "id": "5",
-      "name": "Garm",
-      "evolveLevel": 1,
-      "essence": "",
-      "element": "Paper",
-      "auras": [],
-      "additionalAuras": []
-    },
-    {
-      "id": "6",
       "name": "Dark Lord",
-      "evolveLevel": 1,
       "essence": "",
       "element": "Scissors",
       "auras": ["Dark"],
       "additionalAuras": ["Fire"]
     },
     {
-      "id": "7",
+      "id": "6",
       "name": "Dark Illusion",
-      "evolveLevel": 1,
       "essence": "",
       "element": "Scissors",
       "auras": ["Dark"],
       "additionalAuras": []
     },
     {
-      "id": "8",
-      "name": "Orc Hero",
-      "evolveLevel": 1,
+      "id": "7",
+      "name": "Nightmare Terror",
       "essence": "",
-      "element": "Rock",
-      "auras": [],
+      "element": "Scissors",
+      "auras": ["Fire"],
+      "additionalAuras": []
+    },
+    {
+      "id": "8",
+      "name": "Gryphon",
+      "essence": "",
+      "element": "Scissors",
+      "auras": ["Wind"],
       "additionalAuras": []
     },
     {
       "id": "9",
-      "name": "Orc Lord",
-      "evolveLevel": 1,
+      "name": "Leib Olmai",
+      "essence": "",
+      "element": "Scissors",
+      "auras": ["Earth"],
+      "additionalAuras": []
+    },
+    {
+      "id": "10",
+      "name": "Atroce",
+      "essence": "",
+      "element": "Scissors",
+      "auras": [],
+      "additionalAuras": []
+    },
+    {
+      "id": "11",
+      "name": "Moonlight",
       "essence": "",
       "element": "Rock",
-      "auras": [],
+      "auras": ["Fire"],
+      "additionalAuras": []
+    },
+    {
+      "id": "12",
+      "name": "Orc Hero",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Earth"],
+      "additionalAuras": []
+    },
+    {
+      "id": "13",
+      "name": "Turtle General",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Earth", "Water"],
+      "additionalAuras": []
+    },
+    {
+      "id": "14",
+      "name": "Doppleganger",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Dark"],
+      "additionalAuras": []
+    },
+    {
+      "id": "15",
+      "name": "Drake",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Dark"],
+      "additionalAuras": []
+    },
+    {
+      "id": "16",
+      "name": "Owl Baron",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Water"],
+      "additionalAuras": []
+    },
+    {
+      "id": "17",
+      "name": "Loli Ruri",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Water"],
+      "additionalAuras": []
+    },
+    {
+      "id": "18",
+      "name": "Alice",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Light"],
+      "additionalAuras": []
+    },
+    {
+      "id": "19",
+      "name": "Wander Man",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Earth"],
+      "additionalAuras": []
+    },
+    {
+      "id": "20",
+      "name": "Orc Lord",
+      "essence": "",
+      "element": "Rock",
+      "auras": ["Earth"],
+      "additionalAuras": []
+    },
+    {
+      "id": "21",
+      "name": "Mitress",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Wind"],
+      "additionalAuras": []
+    },
+    {
+      "id": "22",
+      "name": "Maya",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Earth"],
+      "additionalAuras": []
+    },
+    {
+      "id": "23",
+      "name": "Tao Gunka",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Light"],
+      "additionalAuras": []
+    },
+    {
+      "id": "24",
+      "name": "G Randgris",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Light", "Wind"],
+      "additionalAuras": []
+    },
+    {
+      "id": "25",
+      "name": "Garm",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Water"],
+      "additionalAuras": []
+    },
+    {
+      "id": "26",
+      "name": "Angeling",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Light"],
+      "additionalAuras": []
+    },
+    {
+      "id": "27",
+      "name": "Deleter",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Fire"],
+      "additionalAuras": []
+    },
+    {
+      "id": "28",
+      "name": "Golden Bug",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Fire"],
+      "additionalAuras": []
+    },
+    {
+      "id": "29",
+      "name": "Mini Demon",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Wind"],
+      "additionalAuras": []
+    },
+    {
+      "id": "30",
+      "name": "Deviling",
+      "essence": "",
+      "element": "Paper",
+      "auras": ["Dark"],
+      "additionalAuras": []
+    },
+    {
+      "id": "31",
+      "name": "Katrinn",
+      "essence": "",
+      "element": "White",
+      "auras": ["Water"],
+      "additionalAuras": ["Light"]
+    },
+    {
+      "id": "32",
+      "name": "Magaleta",
+      "essence": "",
+      "element": "White",
+      "auras": ["Light"],
+      "additionalAuras": []
+    },
+    {
+      "id": "33",
+      "name": "Rendel",
+      "essence": "",
+      "element": "White",
+      "auras": ["Light"],
+      "additionalAuras": ["Earth"]
+    },
+    {
+      "id": "34",
+      "name": "Eremes",
+      "essence": "",
+      "element": "Black",
+      "auras": ["Water"],
+      "additionalAuras": ["Wind"]
+    },
+    {
+      "id": "35",
+      "name": "Sheci",
+      "essence": "",
+      "element": "Black",
+      "auras": ["Wind"],
+      "additionalAuras": ["Fire"]
+    },
+    {
+      "id": "36",
+      "name": "Seyren",
+      "essence": "",
+      "element": "Black",
+      "auras": ["Earth"],
       "additionalAuras": []
     }
   ]
