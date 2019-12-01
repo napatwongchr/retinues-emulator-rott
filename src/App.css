@@ -1,24 +1,37 @@
 .App {
+  font-family: "Baloo Bhai", cursive;
   height: 100vh;
   display: flex;
+  background-image: url("./images/main-bg.png");
 }
 
 .Hero-list-section {
   max-width: 350px;
-  background-color: lightblue;
+  background-color: rgba(26.1, 25.9, 31.5, 0.8);
+  box-shadow: 2px 0 5px -2px rgba(211, 211, 214, 0.5);
   overflow-y: scroll;
 }
 
 .Hero-list {
   display: flex;
   flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+.Hero-list-heading {
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 
 .Hero-item {
   display: inline;
   padding: 5px;
   margin: 5px;
-  background-color: khaki;
+  width: 60px;
+  height: 60px;
+  background-color: white;
 }
 
 .Hero-item-delete-btn {
@@ -26,12 +39,73 @@
   cursor: pointer;
 }
 
-.Retinues-calculation-section {
+.Resonance-calculation-section {
   width: 100vw;
-  padding: 50px;
-  background-color: coral;
+  background-color: rgba(26.1, 25.9, 31.5, 0.8);
+  padding: 0px 50px;
 }
 
-.Retinues-summary {
-  background-color: lightseagreen;
+.Resonance-calculation-heading {
+  font-size: 50px;
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  color: white;
+}
+
+.Resonance-calculation-card {
+  display: flex;
+  justify-content: center;
+}
+
+.Card-hero-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  width: 140px;
+  height: 180px;
+  margin: 0 10px;
+}
+
+.Hero-item-delete-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
+
+.Resonance-summary {
+  font-family: "Baloo Bhai", cursive;
+  letter-spacing: 2px;
+  font-size: 18px;
+  margin-top: 70px;
+  color: white;
+}
+
+.Resonance-summary-content {
+  display: flex;
+}
+
+.Resonance-summary-element-count {
+  margin-right: 150px;
+}
+
+.Resonance-summary-aura-count {
+  margin-right: 150px;
+}
+
+.No-card-info-box {
+  width: 100%;
+  border: 3px dashed rgb(238, 238, 238);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 70px 0;
+  letter-spacing: 3px;
 }

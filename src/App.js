@@ -136,7 +136,10 @@ function App() {
   return (
     <div className="App">
       <div className="Hero-list-section">
-        <h1>Hero list</h1>
+        <div className="Hero-list-heading">
+          <h1>HERO LIST</h1>
+        </div>
+
         <div className="Hero-list">
           {heroes.data.map(hero => {
             return (
@@ -153,57 +156,84 @@ function App() {
         </div>
       </div>
       <div
-        className="Retinues-calculation-section"
+        className="Resonance-calculation-section"
         onDragOver={handleDragOver}
         onDrop={handleOnDrop}
       >
-        <h1>Retinues calculation area</h1>
-        <div className="Card-section">
-          {heroList.map(item => {
-            return (
-              <div key={item.id} className="Hero-item">
-                <span>{item.name}</span>
-                <span
-                  className="Hero-item-delete-btn"
-                  onClick={handleOnHeroDelete(item.id)}
-                >
-                  X
-                </span>
-              </div>
-            );
-          })}
+        <div className="Resonance-calculation-heading">
+          <span>MONSTERS LINE UP</span>
         </div>
-        <div className="Retinues-summary">
-          <h3>This is summary</h3>
-          <div className="Retinues-count">
-            {Object.keys(resonanceAuraCount).map((key, index) => {
+        <div className="Resonance-calculation-card">
+          {heroList.length ? (
+            heroList.map(item => {
               return (
-                <div key={index} className="Retinues-aura-count">
-                  <span>{key}</span>
-                  <span>{resonanceAuraCount[key]}</span>
+                <div key={item.id} className="Card-hero-item">
+                  <span
+                    className="Hero-item-delete-btn"
+                    onClick={handleOnHeroDelete(item.id)}
+                  >
+                    X
+                  </span>
+                  <span>hero pic</span>
+                  <span>{item.name}</span>
                 </div>
               );
-            })}
-
-            {Object.keys(resonanceElementCount).map((key, index) => {
-              return (
-                <div key={index} className="Retinues-element-count">
-                  <span>{key}</span>
-                  <span>{resonanceElementCount[key]}</span>
-                </div>
-              );
-            })}
+            })
+          ) : (
+            <div className="No-card-info-box">
+              <h1>Drag monster here !</h1>
+            </div>
+          )}
+        </div>
+        <div className="Resonance-summary">
+          <div className="Resonance-summary-heading">
+            <h2>SUMMARY</h2>
           </div>
-          <div className="Resonance-summary-info">
-            <div className="Resonance-summary-info-elements-buffs">
-              {resonanceElementBuffs.map((elementBuff, index) => {
-                return <span key={index}>{elementBuff}</span>;
+          <div className="Resonance-summary-content">
+            <div className="Resonance-summary-element-count">
+              {Object.keys(resonanceElementCount).map((key, index) => {
+                return (
+                  <div key={index} className="Resonance-element-count">
+                    <span>
+                      {key} x{resonanceElementCount[key]}
+                    </span>
+                  </div>
+                );
               })}
             </div>
-            <div className="Resonance-summary-info-auras-buffs">
-              {resonanceAuraBuffs.map((auraBuff, index) => {
-                return <span key={index}>{auraBuff}</span>;
+            <div className="Resonance-summary-aura-count">
+              {Object.keys(resonanceAuraCount).map((key, index) => {
+                return (
+                  <div key={index} className="Resonance-aura-count">
+                    <span>
+                      {key} x{resonanceAuraCount[key]}
+                    </span>
+                  </div>
+                );
               })}
+            </div>
+
+            <div className="Resonance-summary-info">
+              <div className="Resonance-summary-info-elements-buffs">
+                {resonanceElementBuffs.map((elementBuff, index) => {
+                  return (
+                    <span key={index}>
+                      {elementBuff}
+                      <br />
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="Resonance-summary-info-auras-buffs">
+                {resonanceAuraBuffs.map((auraBuff, index) => {
+                  return (
+                    <span key={index}>
+                      {auraBuff}
+                      <br />
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
