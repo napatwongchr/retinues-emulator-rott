@@ -43,12 +43,21 @@ function ResonanceCalArea() {
         setMonsterList={setMonsterList}
       />
       <ResonanceSummary monsterList={monsterList} />
+      <div className={styles.footer}>
+        <a
+          className={styles.creditText}
+          href="https://www.facebook.com/spacewalker.ch"
+        >
+          By Spacewalker CH
+        </a>
+      </div>
     </div>
   );
 }
 
 const styles = {
   resonanceCalSection: css`
+    position: relative;
     width: 100vw;
     background-color: rgba(26.1, 25.9, 31.5, 0.8);
     padding: 0px 50px;
@@ -60,6 +69,19 @@ const styles = {
     justify-content: center;
     margin: 30px 0;
     color: white;
+  `,
+  footer: css`
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    color: white;
+    font-size: 16px;
+  `,
+  creditText: css`
+    text-decoration: none;
+    :visited {
+      color: white;
+    }
   `
 };
 

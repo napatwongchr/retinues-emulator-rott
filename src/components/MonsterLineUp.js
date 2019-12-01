@@ -9,17 +9,28 @@ function MonsterLineUp({ monsterList, setMonsterList }) {
   return (
     <div className={styles.container}>
       {monsterList.length ? (
-        monsterList.map(item => {
+        monsterList.map(monster => {
+          let monsterImgName = monster.name
+            .split(" ")
+            .map(word => word.toLowerCase())
+            .join("-");
           return (
-            <div key={item.id} className={styles.monsterCard}>
+            <div key={monster.id} className={styles.monsterCard}>
               <span
                 className={styles.cardDeleteBtn}
-                onClick={handleOnHeroDelete(item.id)}
+                onClick={handleOnHeroDelete(monster.id)}
               >
                 X
               </span>
-              <span>hero pic</span>
-              <span>{item.name}</span>
+              <img
+                className={styles.monsterImage}
+                src={require(`../images/monsters/${monsterImgName}.png`)}
+                width={80}
+                height={80}
+                alt={monster.name}
+              />
+
+              <span className={styles.monsterName}>{monster.name}</span>
             </div>
           );
         })
@@ -38,10 +49,11 @@ const styles = {
     justify-content: center;
   `,
   monsterCard: css`
+    cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 5px;
     padding: 10px;
@@ -49,6 +61,12 @@ const styles = {
     width: 140px;
     height: 180px;
     margin: 0 10px;
+  `,
+  monsterImage: css`
+    margin-top: 30px;
+  `,
+  monsterName: css`
+    font-size: 20px;
   `,
   noCardInfoBox: css`
     width: 100%;
@@ -64,6 +82,8 @@ const styles = {
     position: absolute;
     top: 6px;
     right: 10px;
+    cursor: pointer;
+    font-size: 20px;
   `
 };
 

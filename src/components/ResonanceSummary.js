@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Fragment } from "react";
 import { css } from "emotion/macro";
 import BONUS_ELEMENT_BUFFS from "../data/elementBuffs.json";
 import BONUS_AURA_BUFFS from "../data/auraBuffs.json";
@@ -104,15 +104,19 @@ function ResonanceSummary({ monsterList }) {
   return (
     <div className={styles.resonanceSummaryContainer}>
       <div>
-        <h2>SUMMARY</h2>
+        <h2 className={styles.resonanceSummaryHeading}>SUMMARY</h2>
       </div>
       <div className={styles.resonanceSummaryContent}>
         <div className={styles.resonanceSummaryElementCount}>
           {Object.keys(resonanceElementCount).map((key, index) => {
             return (
-              <div key={index} className="Resonance-element-count">
-                <span>
-                  {key} x{resonanceElementCount[key]}
+              <div className={styles.resonanceElementCountInfo} key={index}>
+                <img
+                  src={require(`../images/elements/${key.toLowerCase()}.png`)}
+                  alt={key}
+                />{" "}
+                <span className={styles.elementCountNumber}>
+                  x{resonanceElementCount[key]}
                 </span>
               </div>
             );
@@ -121,9 +125,13 @@ function ResonanceSummary({ monsterList }) {
         <div className={styles.resonanceSummaryAuraCount}>
           {Object.keys(resonanceAuraCount).map((key, index) => {
             return (
-              <div key={index} className="Resonance-aura-count">
-                <span>
-                  {key} x{resonanceAuraCount[key]}
+              <div className={styles.resonanceAuraCountInfo} key={index}>
+                <img
+                  src={require(`../images/auras/${key.toLowerCase()}.png`)}
+                  alt={key}
+                />{" "}
+                <span className={styles.elementCountNumber}>
+                  x{resonanceAuraCount[key]}
                 </span>
               </div>
             );
@@ -131,25 +139,37 @@ function ResonanceSummary({ monsterList }) {
         </div>
 
         <div className={styles.resonanceSummaryBuffs}>
-          <div className="Resonance-summary-info-elements-buffs">
-            {resonanceElementBuffs.map((elementBuff, index) => {
-              return (
-                <span key={index}>
-                  {elementBuff}
-                  <br />
-                </span>
-              );
-            })}
+          <div className={styles.resonanceSummaryElementBuffs}>
+            {resonanceElementBuffs.length ? (
+              <Fragment>
+                <span className={styles.buffsHeading}>Element buffs</span>
+                {resonanceElementBuffs.map((elementBuff, index) => {
+                  return (
+                    <div key={index} className={styles.buffsDetail}>
+                      <span className={styles.buffName}>{elementBuff}</span> :{" "}
+                      {BONUS_ELEMENT_BUFFS[elementBuff].effect}
+                      <br />
+                    </div>
+                  );
+                })}
+              </Fragment>
+            ) : null}
           </div>
-          <div className="Resonance-summary-info-auras-buffs">
-            {resonanceAuraBuffs.map((auraBuff, index) => {
-              return (
-                <span key={index}>
-                  {auraBuff}
-                  <br />
-                </span>
-              );
-            })}
+          <div className={styles.resonanceSummaryAuraBuffs}>
+            {resonanceAuraBuffs.length ? (
+              <Fragment>
+                <span className={styles.buffsHeading}>Aura buffs</span>
+                {resonanceAuraBuffs.map((auraBuff, index) => {
+                  return (
+                    <div key={index} className={styles.buffsDetail}>
+                      <span className={styles.buffName}>{auraBuff}</span> :{" "}
+                      {BONUS_AURA_BUFFS[auraBuff].effect}
+                      <br />
+                    </div>
+                  );
+                })}
+              </Fragment>
+            ) : null}
           </div>
         </div>
       </div>
@@ -158,6 +178,38 @@ function ResonanceSummary({ monsterList }) {
 }
 
 const styles = {
+  resonanceSummaryHeading: css`
+    margin-bottom: 5px;
+  `,
+  resonanceElementCountInfo: css`
+    display: flex;
+    align-items: center;
+  `,
+  resonanceAuraCountInfo: css`
+    display: flex;
+    align-items: center;
+  `,
+  elementCountNumber: css`
+    margin-left: 10px;
+    font-size: 24px;
+  `,
+  buffsHeading: css`
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    margin-top: 0;
+  `,
+  buffName: css`
+    color: coral;
+    border-bottom: 4px dashed coral;
+  `,
+  buffsDetail: css`
+    line-height: 1.6;
+    max-height: 200px;
+    margin-top: 10px;
+    overflow-y: scroll;
+  `,
   resonanceSummaryContainer: css`
     letter-spacing: 2px;
     font-size: 18px;
@@ -168,13 +220,26 @@ const styles = {
     display: flex;
   `,
   resonanceSummaryAuraCount: css`
-    margin-right: 150px;
+    margin-right: 50px;
   `,
   resonanceSummaryElementCount: css`
-    margin-right: 150px;
+    margin-right: 50px;
   `,
-  resonanceSummaryElementBuffs: css``,
-  resonanceSummaryAuraBuffs: css``
+  resonanceSummaryBuffs: css`
+    display: flex;
+  `,
+  resonanceSummaryElementBuffs: css`
+    max-width: 350px;
+    max-height: 200px;
+    margin-right: 10px;
+    word-break: break-all;
+  `,
+  resonanceSummaryAuraBuffs: css`
+    max-width: 350px;
+    max-height: 200px;
+    margin-right: 10px;
+    word-break: break-all;
+  `
 };
 
 export default ResonanceSummary;
