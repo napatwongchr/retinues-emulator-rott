@@ -10,7 +10,7 @@ function MonsterPoolList() {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <h1>MONSTER LIST</h1>
+        <h1 className={styles.headingText}>MONSTER LIST</h1>
       </div>
 
       <div className={styles.monsterPoolList}>
@@ -43,7 +43,6 @@ const styles = {
     max-width: 350px;
     background-color: rgba(26.1, 25.9, 31.5, 0.8);
     box-shadow: 2px 0 5px -2px rgba(255, 255, 255, 0.9);
-    overflow-y: scroll;
   `,
   heading: css`
     letter-spacing: 3px;
@@ -51,10 +50,15 @@ const styles = {
     justify-content: center;
     color: white;
   `,
+  headingText: css`
+    margin-bottom: 5px;
+  `,
   monsterPoolList: css`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 100%;
   `,
   monster: css`
     display: inline;

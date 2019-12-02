@@ -16,6 +16,11 @@ function MonsterLineUp({ monsterList, setMonsterList }) {
             .join("-");
           return (
             <div key={monster.id} className={styles.monsterCard}>
+              <img
+                className={styles.monsterElement}
+                src={require(`../images/elements/${monster.element.toLowerCase()}.png`)}
+                alt={monster.element}
+              />
               <span
                 className={styles.cardDeleteBtn}
                 onClick={handleOnHeroDelete(monster.id)}
@@ -29,7 +34,6 @@ function MonsterLineUp({ monsterList, setMonsterList }) {
                 height={80}
                 alt={monster.name}
               />
-
               <span className={styles.monsterName}>{monster.name}</span>
             </div>
           );
@@ -48,6 +52,11 @@ const styles = {
     display: flex;
     justify-content: center;
   `,
+  monsterElement: css`
+    position: absolute;
+    top: -15px;
+    left: -15px;
+  `,
   monsterCard: css`
     cursor: pointer;
     position: relative;
@@ -57,7 +66,7 @@ const styles = {
     align-items: center;
     border-radius: 5px;
     padding: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
     width: 140px;
     height: 180px;
     margin: 0 10px;
