@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "emotion/macro";
 import HeroList from "./components/HeroList";
 import ResonanceCalArea from "./components/ResonanceCalArea";
 import wallpaper from "./images/main-bg.png";
 
 function App() {
+  const [monsterList, setMonsterList] = useState([]);
+
   return (
     <div className={styles.container}>
-      <HeroList />
-      <ResonanceCalArea />
+      <HeroList monsterList={monsterList} setMonsterList={setMonsterList} />
+      <ResonanceCalArea
+        monsterList={monsterList}
+        setMonsterList={setMonsterList}
+      />
     </div>
   );
 }

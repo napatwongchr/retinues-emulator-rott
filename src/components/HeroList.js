@@ -2,9 +2,25 @@ import React from "react";
 import { css } from "emotion/macro";
 import MONSTERS from "../data/monsters.json";
 
-function MonsterPoolList() {
+const uuidv4 = require("uuid/v4");
+
+function MonsterPoolList({ monsterList, setMonsterList }) {
   const handleOnDragStart = heroId => e => {
     e.dataTransfer.setData("id", heroId);
+  };
+
+  const handleOnDoubleClick = clickedHeroId => e => {
+    if (monsterList.length < 5) {
+      let filteredHero = MONSTERS.data
+        .filter(hero => hero.id === clickedHeroId)
+        .map(item => {
+          return {
+            ...item,
+            id: `${item.id}-${uuidv4()}`
+          };
+        });
+      setMonsterList([...monsterList, ...filteredHero]);
+    }
   };
 
   return (
@@ -25,6 +41,7 @@ function MonsterPoolList() {
               className={styles.monster}
               draggable
               onDragStart={handleOnDragStart(monster.id)}
+              onDoubleClick={handleOnDoubleClick(monster.id)}
             >
               <img
                 src={require(`../images/monsters/${monsterImgName}.png`)}
@@ -58,7 +75,7 @@ const styles = {
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
-    max-height: 100%;
+    max-height: 85%;
   `,
   monster: css`
     display: inline;

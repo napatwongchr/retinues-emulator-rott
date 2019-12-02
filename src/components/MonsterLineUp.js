@@ -40,7 +40,7 @@ function MonsterLineUp({ monsterList, setMonsterList }) {
         })
       ) : (
         <div className={styles.noCardInfoBox}>
-          <h1>Drag monster here !</h1>
+          <h1>Double click monster or Drag monster here !</h1>
         </div>
       )}
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { css } from "emotion/macro";
 import MonsterLineUp from "./MonsterLineUp";
 import ResonanceSummary from "./ResonanceSummary";
@@ -7,9 +7,7 @@ import MONSTERS from "../data/monsters.json";
 
 const uuidv4 = require("uuid/v4");
 
-function ResonanceCalArea() {
-  const [monsterList, setMonsterList] = useState([]);
-
+function ResonanceCalArea({ monsterList, setMonsterList }) {
   const handleDragOver = e => {
     e.preventDefault();
   };
