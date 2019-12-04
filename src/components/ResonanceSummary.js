@@ -62,6 +62,18 @@ function ResonanceSummary({ monsterList }) {
 
       if (isConditionValid) {
         resultBuffs.push(bonus);
+        const OVERRIDE_ELEMENT_BUFFS = [
+          "Elf Knots",
+          "Chain Guardian",
+          "Void Barrier"
+        ];
+        OVERRIDE_ELEMENT_BUFFS.forEach(overrideBuff => {
+          if (resultBuffs.includes(overrideBuff)) {
+            resultBuffs = resultBuffs.filter(
+              resultBuff => resultBuff !== "Fraction Expert"
+            );
+          }
+        });
       }
 
       setResonanceElementBuffs(resultBuffs);
