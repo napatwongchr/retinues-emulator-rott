@@ -13,22 +13,32 @@ function ResonanceSummary({ monsterList }) {
     let countElements = {};
     let countAuras = {};
     // count types
-    monsterList.forEach(item => {
-      if (countElements[item.element]) {
-        countElements[item.element]++;
+    monsterList.forEach(monster => {
+      if (countElements[monster.element]) {
+        countElements[monster.element]++;
       } else {
-        countElements[item.element] = 1;
+        countElements[monster.element] = 1;
       }
       // count auras
-      item.auras.forEach(aura => {
+      monster.auras.forEach(aura => {
         if (countAuras[aura]) {
           countAuras[aura]++;
         } else {
           countAuras[aura] = 1;
         }
       });
-      // count additional auras
-      item.additionalAuras.forEach(aura => {
+      // count additional auras (unlock monster aura)
+      if (monster.isAdditionalAuraCheck) {
+        monster.additionalAuras.forEach(aura => {
+          if (countAuras[aura]) {
+            countAuras[aura]++;
+          } else {
+            countAuras[aura] = 1;
+          }
+        });
+      }
+      //count essence auras
+      (monster.essenceAuras || []).forEach(aura => {
         if (countAuras[aura]) {
           countAuras[aura]++;
         } else {

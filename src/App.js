@@ -4,6 +4,8 @@ import HeroList from "./components/HeroList";
 import ResonanceCalArea from "./components/ResonanceCalArea";
 import wallpaper from "./images/main-bg.png";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   const [monsterList, setMonsterList] = useState([]);
 

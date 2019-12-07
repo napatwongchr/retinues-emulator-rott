@@ -68,6 +68,8 @@ const styles = {
     color: white;
   `,
   headingText: css`
+    font-size: 32px;
+    margin-top: 20px;
     margin-bottom: 5px;
   `,
   monsterPoolList: css`
